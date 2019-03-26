@@ -7,7 +7,11 @@ public class UseCaseHandler {
 
     public static UseCaseHandler getInstance() {
         if (useCaseHandler == null) {
-            useCaseHandler = new UseCaseHandler(new UseCaseThreadPoolScheduler());
+            synchronized (UseCaseHandler.class) {
+                if (useCaseHandler == null) {
+                    useCaseHandler = new UseCaseHandler(new UseCaseThreadPoolScheduler());
+                }
+            }
         }
         return useCaseHandler;
     }
