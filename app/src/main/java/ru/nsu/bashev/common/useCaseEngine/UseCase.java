@@ -3,9 +3,9 @@ package ru.nsu.bashev.common.useCaseEngine;
 public abstract class UseCase<T extends UseCase.RequestValues, R extends UseCase.ResponseValues> {
 
     private T requestValues;
-    private IUseCaseCallback<T> useCaseCallback;
+    private IUseCaseCallback<R> useCaseCallback;
 
-    public void run() {
+    void run() {
         executeUseCase(requestValues);
     }
 
@@ -15,15 +15,15 @@ public abstract class UseCase<T extends UseCase.RequestValues, R extends UseCase
         return requestValues;
     }
 
-    public void setRequestValues(T requestValues) {
+    void setRequestValues(T requestValues) {
         this.requestValues = requestValues;
     }
 
-    public IUseCaseCallback<T> getUseCaseCallback() {
+    public IUseCaseCallback<R> getUseCaseCallback() {
         return useCaseCallback;
     }
 
-    public void setUseCaseCallback(IUseCaseCallback<T> useCaseCallback) {
+    void setUseCaseCallback(IUseCaseCallback<R> useCaseCallback) {
         this.useCaseCallback = useCaseCallback;
     }
 

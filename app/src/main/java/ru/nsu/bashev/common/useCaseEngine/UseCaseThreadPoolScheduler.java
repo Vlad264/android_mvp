@@ -15,7 +15,7 @@ public class UseCaseThreadPoolScheduler implements IUseCaseScheduler {
     private ThreadPoolExecutor threadPoolExecutor;
     private Handler handler = new Handler();
 
-    public UseCaseThreadPoolScheduler() {
+    UseCaseThreadPoolScheduler() {
         this.threadPoolExecutor = new ThreadPoolExecutor(POOL_SIZE, MAX_POOL_SIZE, TIMEOUT,
                 TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(POOL_SIZE));
     }
@@ -32,7 +32,7 @@ public class UseCaseThreadPoolScheduler implements IUseCaseScheduler {
             public void run() {
                 callback.onSuccess(response);
             }
-        })
+        });
     }
 
     @Override
@@ -42,6 +42,6 @@ public class UseCaseThreadPoolScheduler implements IUseCaseScheduler {
             public void run() {
                 callback.onError();
             }
-        })
+        });
     }
 }
