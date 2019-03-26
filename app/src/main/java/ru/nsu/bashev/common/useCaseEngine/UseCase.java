@@ -5,6 +5,10 @@ public abstract class UseCase<T extends UseCase.RequestValues, R extends UseCase
     private T requestValues;
     private IUseCaseCallback<T> useCaseCallback;
 
+    public void run() {
+        executeUseCase(requestValues);
+    }
+
     protected abstract void executeUseCase(T requestValues);
 
     public T getRequestValues() {
